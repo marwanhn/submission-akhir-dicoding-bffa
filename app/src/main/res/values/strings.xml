@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">GitHubAPI</string>
+    <string name="username">Username</string>
+    <string name="nama">Nama User</string>
+    <string name="url">hhtps://github.com/user</string>
+    <string name="followers">Follower</string>
+    <string name="following">Following</string>
+    <string name="repository">Repository</string>
+    <string name="total">00</string>
+    <string name="rv_hint">Cari nama user disini\.\.\.</string>
+    <string name="hint">Masukkan username disini\.\.\.</string>
 </resources>
