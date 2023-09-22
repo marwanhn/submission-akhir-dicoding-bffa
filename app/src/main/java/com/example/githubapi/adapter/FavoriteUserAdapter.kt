@@ -6,28 +6,22 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.githubapi.data.database.UserEntity
-import com.example.githubapi.data.response.GithubUser
 import com.example.githubapi.databinding.ItemRowUsersBinding
 import com.example.githubapi.ui.activity.DetailUserActivity
-import com.example.githubapi.ui.activity.DetailUserActivity.Companion.EXTRA_USER
 
-class SearchUserAdapter(private val listUser: List<GithubUser>) : RecyclerView.Adapter<SearchUserAdapter.ViewHolder>() {
-    private lateinit var onItemClickCallback: OnItemClickCallback
-
+class FavoriteUserAdapter(private val listUser: List<UserEntity>) : RecyclerView.Adapter<FavoriteUserAdapter.ViewHolder>() {
     inner class ViewHolder(private val binding: ItemRowUsersBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(user: GithubUser) {
+        fun bind(user: UserEntity) {
             with(binding) {
                 Glide.with(root.context)
-                    .load(user.avatarUrl)
+                    .load(user.avatar)
                     .circleCrop()
                     .into(ivImage)
                 tvUsername.text = user.login
-                tvUrl.text = user.htmlUrl
-                root.setOnClickListener { onItemClickCallback.onItemClicked(user) }
             }
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, DetailUserActivity::class.java)
-                intent.putExtra(EXTRA_USER, UserEntity(login = user.login, avatar = user.avatarUrl))
+                intent.putExtra(DetailUserActivity.EXTRA_USER, UserEntity(login = user.login, avatar = user.avatar))
                 itemView.context.startActivity(intent)
             }
         }
@@ -48,7 +42,4 @@ class SearchUserAdapter(private val listUser: List<GithubUser>) : RecyclerView.A
     }
 
 
-    interface OnItemClickCallback {
-        fun onItemClicked(data: GithubUser)
-    }
 }

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="MissingDefaultResource">
+        <item android:title="@string/favorite_user"
+            android:id="@+id/favorite"
+            android:icon="@drawable/baseline_favorite_filled_24"
+            app:showAsAction="always">
+        </item>
+    <item android:title="@string/dark_mode"
+        android:id="@+id/dark_mode"
+        android:icon="@drawable/baseline_mode_night_24"
+        app:showAsAction="always">
+    </item>
+</menu>

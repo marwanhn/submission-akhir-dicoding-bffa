@@ -14,5 +14,6 @@
     <color name="secondaryTextColor">#586069</color>
     <color name="secondaryTextDarkColor">#8B949E</color>
     <color name="text">#b7c0c7</color>
+    <color name="favorite">#CB3535</color>
 
 </resources>

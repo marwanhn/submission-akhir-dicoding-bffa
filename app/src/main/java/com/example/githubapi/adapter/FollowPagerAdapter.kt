@@ -6,16 +6,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.githubapi.data.database.UserEntity
-import com.example.githubapi.data.response.GithubUser
+import com.example.githubapi.data.response.DetailUserResponse
 import com.example.githubapi.databinding.ItemRowUsersBinding
 import com.example.githubapi.ui.activity.DetailUserActivity
-import com.example.githubapi.ui.activity.DetailUserActivity.Companion.EXTRA_USER
 
-class SearchUserAdapter(private val listUser: List<GithubUser>) : RecyclerView.Adapter<SearchUserAdapter.ViewHolder>() {
-    private lateinit var onItemClickCallback: OnItemClickCallback
+class FollowPagerAdapter(private val listUser: ArrayList<DetailUserResponse>) : RecyclerView.Adapter<FollowPagerAdapter.ViewHolder>() {
 
     inner class ViewHolder(private val binding: ItemRowUsersBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(user: GithubUser) {
+        fun bind(user: DetailUserResponse) {
             with(binding) {
                 Glide.with(root.context)
                     .load(user.avatarUrl)
@@ -23,15 +21,16 @@ class SearchUserAdapter(private val listUser: List<GithubUser>) : RecyclerView.A
                     .into(ivImage)
                 tvUsername.text = user.login
                 tvUrl.text = user.htmlUrl
-                root.setOnClickListener { onItemClickCallback.onItemClicked(user) }
             }
             itemView.setOnClickListener {
                 val intent = Intent(itemView.context, DetailUserActivity::class.java)
-                intent.putExtra(EXTRA_USER, UserEntity(login = user.login, avatar = user.avatarUrl))
+                intent.putExtra(
+                    DetailUserActivity.EXTRA_USER, UserEntity(login = user.login, avatar = user.avatarUrl))
                 itemView.context.startActivity(intent)
             }
         }
     }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemRowUsersBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -39,16 +38,11 @@ class SearchUserAdapter(private val listUser: List<GithubUser>) : RecyclerView.A
     }
 
     override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
-        val user = listUser[position]
-        viewHolder.bind(user)
+        viewHolder.bind(listUser[position])
     }
 
     override fun getItemCount(): Int {
         return listUser.size
     }
 
-
-    interface OnItemClickCallback {
-        fun onItemClicked(data: GithubUser)
-    }
 }

@@ -1,7 +1,6 @@
 package com.example.githubapi.data.retrofit
 
 import com.example.githubapi.data.response.DetailUserResponse
-import com.example.githubapi.data.response.GithubUser
 import com.example.githubapi.data.response.UserResponse
 import retrofit2.*
 import retrofit2.http.GET
@@ -11,7 +10,7 @@ import retrofit2.http.Query
 
 
 interface ApiService {
-    @Headers("Authorization: token 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")
+    @Headers("Authorization: token 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")
     @GET("search/users")
     fun getUser(
         @Query("q") query: String
@@ -19,30 +18,23 @@ interface ApiService {
 
 
     @GET("users/{login}")
-    @Headers("Authorization: token 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")
+    @Headers("Authorization: token ")
     fun getUserDetail(
         @Path("login") login: String
-    ): Call<GithubUser>
+    ): Call<DetailUserResponse>
 
-    @Headers("Authorization: token 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")
-    @GET("users/{username}")
-    fun getDetailUser(
-        @Path("username")
-        username: String?
-    ): Call<GithubUser>
-
-    @Headers("Authorization: token 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")
+    @Headers("Authorization: token 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")
     @GET("users/{username}/followers")
     fun getUserFollowers(
         @Path("username")
-        username: String?
-    ): Call<ArrayList<GithubUser>>
+        login: String?
+    ): Call<ArrayList<DetailUserResponse>>
 
-    @Headers("Authorization: token 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")
+    @Headers("Authorization: token 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")
     @GET("users/{username}/following")
     fun getUserFollowing(
         @Path("username")
-        username: String?
-    ): Call<ArrayList<GithubUser>>
+        login: String?
+    ): Call<ArrayList<DetailUserResponse>>
 
 }
