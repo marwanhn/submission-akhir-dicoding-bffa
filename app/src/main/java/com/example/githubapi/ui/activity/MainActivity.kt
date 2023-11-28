@@ -38,7 +38,9 @@ class MainActivity : AppCompatActivity() {
         mainViewModel.findUser("MarwanH")
         with(binding) {
             searchView.setupWithSearchBar(searchbar)
-            searchView.editText.setOnEditorActionListener { _, _, _ ->
+            searchView
+                .editText
+                .setOnEditorActionListener { _, _, _ ->
                 searchbar.text = searchView.text
                 if(searchView.text!!.isEmpty()){
                     mainViewModel.findUser("MarwanH")
@@ -116,8 +118,8 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.favorite -> {
-                val launchAbout = Intent(this@MainActivity, FavoriteUserActivity::class.java)
-                startActivity(launchAbout)
+                val launchFavorite = Intent(this@MainActivity, FavoriteUserActivity::class.java)
+                startActivity(launchFavorite)
             }
 
             R.id.dark_mode -> {

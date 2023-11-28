@@ -20,6 +20,8 @@ class FavoriteUserActivity : AppCompatActivity() {
             setDisplayHomeAsUpEnabled(true)
         }
 
+
+
         favoriteViewModel = ViewModelProvider(
             this,
             FavoriteViewModelFactory(application)
@@ -28,7 +30,6 @@ class FavoriteUserActivity : AppCompatActivity() {
         favoriteViewModel.isLoading.observe(this) {
             showLoading(it)
         }
-
         favoriteViewModel.getAllFavorites().observe(this) {
             binding.apply {
                 rvUser.adapter = FavoriteUserAdapter(it)

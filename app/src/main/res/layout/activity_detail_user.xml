@@ -210,5 +210,6 @@
         android:layout_gravity="end|bottom"
         android:src="@drawable/baseline_favorite_border_24"
         android:contentDescription="@string/favorite"
-        android:layout_margin="16dp" />
+        android:layout_margin="16dp"
+        app:tint="@color/favorite"/>
 </FrameLayout>

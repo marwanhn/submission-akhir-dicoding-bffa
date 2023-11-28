@@ -71,6 +71,7 @@ class DetailUserActivity : AppCompatActivity() {
                     }
                     if(isUserFavorited){
                         btnFavorite.setImageResource(R.drawable.baseline_favorite_filled_24)
+
                     } else {
                         btnFavorite.setImageResource(R.drawable.baseline_favorite_border_24)
                     }
